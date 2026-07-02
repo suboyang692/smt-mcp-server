@@ -12,7 +12,7 @@ DB_URL = "postgresql://postgres:[mEQ2SNFjpb7R1XqV]@db.nrrpfamibiotgcuoqjse.supab
 app = FastAPI()
 
 def get_db():
-    return psycopg2.connect(DB_URL)
+    return psycopg2.connect(DB_URL, connect_timeout=10, sslmode='require')
 
 @app.get("/")
 async def root():
