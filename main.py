@@ -6,8 +6,7 @@ import uvicorn
 # ==========================================
 # 改这里！
 # ==========================================
-DB_URL = "postgresql://postgres:[mEQ2SNFjpb7R1XqV]@db.nrrpfamibiotgcuoqjse.supabase.co:5432/postgres"
-
+DB_URL = "postgresql://postgres:mEQ2SNFjpb7R1XqV@aws-0-ap-southeast-1.pooler.supabase.com:6543/postgres"
 # ==========================================
 app = FastAPI()
 
