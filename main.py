@@ -1,17 +1,19 @@
+import os
 import psycopg2
 from psycopg2.extras import RealDictCursor
 from fastapi import FastAPI, Query
 import uvicorn
 
 # ==========================================
-# 改这里！
+# 从环境变量读取数据库连接串
 # ==========================================
-DB_URL = "postgresql://postgres:mEQ2SNFjpb7R1XqV@aws-0-ap-southeast-1.pooler.supabase.com:6543/postgres"
+DB_URL = os.environ.get("DB_URL")
+
 # ==========================================
 app = FastAPI()
 
 def get_db():
-    return psycopg2.connect(DB_URL, connect_timeout=10, sslmode='require')
+    return psycopg2.connect(DB_URL)
 
 @app.get("/")
 async def root():
@@ -130,6 +132,3 @@ async def query_production_logs(
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8080)
-
-
-
